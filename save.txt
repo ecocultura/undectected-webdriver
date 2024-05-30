@@ -1,0 +1,4 @@
+git status                      # Verificar el estado actual del repositorio
+git add .                       # Agregar todos los archivos modificados
+git commit -m "Descripción de los cambios realizados"  # Hacer un commit con un mensaje descriptivo
+git push                        # Empujar los cambios al repositorio remoto
