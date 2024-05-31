@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
@@ -6,6 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
+
+# Establecer la variable de entorno para usar el display virtual
+os.environ['DISPLAY'] = ':1'
 
 # Configurar las opciones de Firefox
 options = Options()
@@ -46,7 +50,7 @@ try:
     try:
     # Esperar a que se carguen todos los elementos de los videos
         videos_yt = wait.until(EC.presence_of_all_elements_located((By.XPATH, '//a[starts-with(@id, "video-title")]')))
-        videos_titulos = [i.get_attribute('href') for i in videos_yt]
+        videos_titulos = [i.get_attribute('title') for i in videos_yt]
         if videos_titulos:
             print(videos_titulos)
         else:
